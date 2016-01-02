@@ -1,0 +1,16 @@
+======= Problem 1 =======
+a. 32 bits
+b. 2^59
+c. 2^27 (physical memory size / page size)
+
+======= Problem 2 =======
+a. N/8 + 3
+b. 40
+
+======= Problem 3 =======
+Access times [stays the same] (Choose one.)
+Explanation: We still have to access memory/disk after we go through 8 integers in the array because a page only brings in 8 integers. Unrolling would only reduce time spent checking branches.
+
+======= Problem 4 =======
+a. 2^13 B (page size)
+b. 2 (# of rows in page table/# of pages per process)

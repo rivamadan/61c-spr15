@@ -1,0 +1,17 @@
+TEST FILES:
+
+CPU-add:
+lui   $t0     0b0011 0101
+ori   $t1 $t0 0b0010 0011
+ori   $t0 $t0 0b0010 1101
+add   $t2 $t0 $t1
+
+CPU-addiu:
+addiu $t0 $t0 0b0010 0010   ## $t0 = 0b0010 0010
+addiu $t1 $t0 0b0010 1011   ## $t1 = 0b0100 1101
+addiu $t2 $t1 0xffdd        ## $t2 = 0x0001 002a
+addiu $t3 $t0 0b0011 0101   ## $t3 = 0b0101 0111
+addiu $t2 $t0 0b0110 0010   ## $t2 = 0b1000 0100
+addiu $t1 $t1 0b0010 1011   ## $t1 = 0b0111 1000
+addiu $t2 $t0 0b0110 0100   ## $t2 = 0b1000 0110
+addiu $t2 $t0 0xff80        ## $t2 = 0xffa2

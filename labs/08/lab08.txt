@@ -1,0 +1,30 @@
+Exercise 1:
+	Scenario 1:
+		1. Because it is direct map and step size == size of cache (# of blocks x cache block size), so each time the array address maps to the same location
+		2. still 0% because we haven't changed the above parameters
+		3. reduce the step size, max is when step size = 1
+	Scenario 2:
+		1. 75% hit rate because cache block size is 4 words and step size is 2, therefore you will first get a miss for the read, but this would bring in 4 words so you would then get a hit for the write and a hit for both the read and write of the next step. This repeats again, so hit 3/4 times.
+		2. Hit rate increases to 100% because the second time you go through the array there are no misses since all that we need to access in the array is in the cache (cache size == array size).
+		3. cache blocking, do # of indices == to block size at a time
+		Scenario where array is > cache size, hit rate stays the same with increasing rep count.
+	Scenario 3:
+		1. Since the block size is 4 and step size is 8, so the random index that you access the next time may or may not be in the cache already.
+		2. Make block size the same as the step size, so that whatever random index you access will be in the cache already.
+
+Exercise 2: (bigger Gflop/s is faster)
+	a. jki, kji
+	b. ikj, kij
+	c. If the strides are smaller in the innermost loop, there is greater chance it will be a hit.
+
+	A B C
+j   0 n n
+k 	n 1 0
+i 	1 0 1
+
+Exercise 3:
+	part 1: The blocked version becomes faster starting at n = 5000. When the entire maxtrix fits in the cache there is no improvement with the block version. The improvement happens once the matrix doesn't fit in the cache because cache blocking makes breaks the matrix into smaller chunks so it fits in the cache.
+
+	part 2: It speed decreases and then increases as blocksize increases (fastest at blocksize = 1000). When blocksize = 5000, the blocksize gets too big that you can't fit it all into the cache, so the speed with and without cache blocking is similar.
+
+	The naive version stays about the same speed because it doesn't depend on blocksize only n.

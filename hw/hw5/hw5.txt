@@ -1,0 +1,102 @@
+======= Problem 1 =======
+(a.1)
+tag = 4
+set index = 10
+block offset = 2
+
+(a.2)
+Address | Cache Hit / Miss | Miss Type (Compulsory, Capacity, or Conflict)
+0x0000  |       miss       | Compulsory
+0x0004  |       miss       | Compulsory         
+0x0008  |       miss       | Compulsory           
+0x000c  |       miss       | Compulsory           
+0x1000  |       miss       | Compulsory           
+0x1004  |       miss       | Compulsory           
+0x1008  |       miss       | Compulsory           
+0x100c  |       miss       | Compulsory           
+0x0000  |       miss       | Conflict        
+0x0004  |       miss       | Conflict         
+0x0008  |       miss       | Conflict          
+0x000c  |       miss       | Conflict          
+
+(a.3)
+Miss rate = 1
+AMAT = 5.1 x 10^-8 ns
+(no cache time) - AMAT =  0.1 x 10^-8 ns
+
+(b.1)
+tag = 4
+set index = 9
+block offset = 3
+
+(b.2)
+Address | Cache Hit / Miss | Miss Type (Compulsory, Capacity, or Conflict)
+0x0000  |       miss       | Compulsory
+0x0004  |       hit        |
+0x0008  |       miss       | Compulsory
+0x000c  |       hit        |
+0x1000  |       miss       | Compulsory
+0x1004  |       hit        |
+0x1008  |       miss       | Compulsory
+0x100c  |       hit        |
+0x0000  |       miss       | Conflict
+0x0004  |       hit        |
+0x0008  |       miss       | Conflict
+0x000c  |       hit        |
+
+(b.3)
+miss rate = 0.5
+hit time = 2 cycles
+miss time = 110 cycles
+AMAT = 2.85 x 10^-8 ns
+(no cache time) - AMAT = -0.1 x 10^-8 ns
+
+(c.1)
+tag = 3
+set index = 8
+block offset = 5
+
+(c.2)
+Address | Cache Hit / Miss | Miss Type (Compulsory, Capacity, or Conflict)
+0x0000  |       miss       | Compulsory
+0x0004  |       hit        |
+0x0008  |       miss       | Compulsory
+0x000c  |       hit        |
+0x1000  |       miss       | Compulsory
+0x1004  |       hit        |
+0x1008  |       miss       | Compulsory
+0x100c  |       hit        |
+0x0000  |       hit        |
+0x0004  |       hit        |
+0x0008  |       hit        |
+0x000c  |       hit        |
+
+(c.3)
+miss rate = 1/3
+hit time = 3 cycles
+miss time = 110 cycles
+AMAT = 1.983 x 10^-8 ns
+(no cache time) - AMAT = 0.767 x 10^-8 ns
+
+======= Problem 2 =======
+a. 1/2
+b. 3/4 miss rate
+
+int i, j, array[256*256];
+
+/* 256*256 = 65536 */
+
+for (i = 0 ; i < 65536 ; i+=256) {
+  for (j = 1 ; j < 256 ; j++) {
+    array[i] += array[i + j];
+  }
+}
+
+c. Yes, because with the code in b, the cache only starts getting overwritten and evicted every time you increment i by 256. Therefore, write backs to main memory will only happen at 256 times instead of after every array[i] += array[i + j].
+
+======= Problem 3 =======
+a. 0x4ca60000
+b. -1698
+c. 4294967233
+d. 2^-30
+e. 2^-55

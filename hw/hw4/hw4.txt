@@ -1,0 +1,61 @@
+CS 61C Homework 4
+Name: Riva Madan
+Login: cs61c-oq
+
+
+P1- Waveform Diagrams
+1) 5
+2) 3
+3) 5ns, 65ns, 125ns
+4) 65ns, 125ns
+
+
+
+P2 - Clock Frequency
+1) Yes it would work, there is register to control results and the critical path delay is 7ns, which is less than the corresponding crtical path delay (10ns) for a clock frequency of 100 MHz.
+2) The critcal path delay is 7ns. The maximum clock frequnecy is 143 MHz.
+3) Have one adder take in both argumenents (X and Y) and have that output then go the second addr that also takes in S(i-1). That output will then go to the register.
+
+
+P3 - Simple FSM and Truth Tables
+
+Curr1| Curr0 | Input | Next1 | Next0 | Output
+  0  |   0   |   0   |   0   |   0   |   0
+  0  |   0   |   1   |   0   |   1   |   0
+  0  |   1   |   0   |   0   |   0   |   0
+  0  |   1   |   1   |   1   |   0   |   1
+  1  |   0   |   0   |   0   |   0   |   1
+  1  |   0   |   1   |   1   |   0   |   1
+
+
+state 00 -> no 1's seen
+state 01 -> one 1 seen
+state 10 -> two 1's seen
+
+//you can add more rows if necessary
+
+
+
+P4 - Truth Tables, Boolean Algebra, FSMs, Logic Circuits
+1) (~ means not)
+
+Out = ~Curr_1.Curr_0.~Input
+
+Next1 = ~Curr_1.Input
+
+Next0 = ~Input.(~Curr_1 + ~Curr_0)
+
+2)
+/*
+	Called once per "clock cycle."
+	Assume input x is 0 or 1.
+	Updates state and outputs FSM output (0 or 1).
+*/
+int fsmCompute(int x) {
+	int retval;
+	static unsigned int state = 0x1;
+	retval = ~(state >> 1) & (state & 1) & (~x);
+	state = ((x & ~(state >> 1)) << 1) & (x & (~(state >> 1)+ ~(state & 1)));
+	return retval;
+}
+

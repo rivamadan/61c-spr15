@@ -1,0 +1,35 @@
+1. 
+.data -> subsequent items stored in data segment
+.text -> subsequent items (instructions) stored in text segment
+.word -> stores the listed values as 32 bit words
+
+2.
+click the tool icon (assemble and clear breakpoint)
+check the box under bkpt in execute
+0x00400020
+hasn't executed 
+
+3.
+continue with f5, remove brkpt (run)
+step with f7 (step)
+
+4. 
+34
+n = 9th
+
+5.
+0x10010010 ($t3)
+
+6.
+change in data segment
+233
+
+7.
+break at 11, change $t3 to 13
+
+8.
+syscall -> mainly for input and ouput
+$v0 has value 1 -> means print integer
+$v0 has value 10 -> exit
+
+
